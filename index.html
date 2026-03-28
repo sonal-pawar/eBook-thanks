@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AI Images Thank You Note eBook</title>
   <link rel="stylesheet" href="assets/vendor/booklet/jquery.booklet.latest.css" />
-  <link rel="stylesheet" href="assets/style.css?v=32" />
+  <link rel="stylesheet" href="assets/style.css?v=35" />
   <script>
     window.__ebookNotes = [
       "assets/images/Poonam.jpg",
@@ -101,7 +101,7 @@
       }
 
       if (prevBtn) {
-        prevBtn.disabled = window.__ebookIndex <= -1;
+        prevBtn.disabled = window.__ebookIndex <= 0;
       }
 
       if (nextBtn) {
@@ -294,6 +294,9 @@
             </div>
           </section>
         </div>
+        <div class="back-cover-home-actions">
+          <button class="open-book-btn back-cover-home-btn" type="button" onclick="window.__goHomeFallback()">Home</button>
+        </div>
       </main>
 
       <footer class="book-footer">
@@ -311,6 +314,6 @@
   <script src="assets/vendor/booklet/jquery-ui-1.10.4.min.js"></script>
   <script src="assets/vendor/booklet/jquery.easing.1.3.js"></script>
   <script src="assets/vendor/booklet/jquery.booklet.latest.js"></script>
-  <script src="assets/booklet-script.js?v=32"></script>
+  <script src="assets/booklet-script.js?v=39"></script>
 </body>
 </html>

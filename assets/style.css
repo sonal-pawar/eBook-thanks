@@ -650,6 +650,63 @@ a {
   padding: 8px 52px 0;
 }
 
+.back-cover-home-actions {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 22px;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  padding: 0 18px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 220ms ease, visibility 220ms ease;
+}
+
+.back-cover-home-btn {
+  min-width: 152px;
+  box-shadow: 0 18px 38px rgba(84, 48, 21, 0.2);
+}
+
+.framework-shell.is-back-cover-mode .book-header,
+.framework-shell.is-back-cover-mode .book-footer {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.framework-shell.is-back-cover-mode .edge-next {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.framework-shell.is-back-cover-mode .back-cover-home-actions {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: none;
+}
+
+.framework-shell.is-back-cover-mode .back-cover-home-btn {
+  pointer-events: auto;
+}
+
+.framework-shell.is-back-cover-mode .book-stage {
+  padding-top: 14px;
+}
+
+.framework-shell.is-back-cover-mode .book-layout {
+  top: 12px;
+  height: calc(100% - 24px);
+}
+
+.framework-shell.is-back-cover-mode .book-stage::before,
+.framework-shell.is-back-cover-mode .book-stage::after {
+  opacity: 0.22;
+}
+
 .book-stage::before,
 .book-stage::after {
   content: "";
@@ -1507,6 +1564,16 @@ a {
     padding: 8px 18px 0;
   }
 
+  .back-cover-home-actions {
+    bottom: 16px;
+    padding: 0 12px;
+  }
+
+  .back-cover-home-btn {
+    min-width: 136px;
+    padding: 12px 20px;
+  }
+
   .book-stage::before,
   .book-stage::after {
     width: 18px;
@@ -1759,8 +1826,44 @@ a {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at top left, rgba(255, 255, 255, 0.58), transparent 34%),
+    linear-gradient(180deg, rgba(255, 248, 238, 0.26), rgba(82, 50, 29, 0.12)),
+    url("images/eBook Bg.jpg") center center / cover no-repeat;
+  filter: saturate(0.96) contrast(1.02);
+  opacity: 0.92;
+}
+
+.front-spacer-page .booklet-page-inner::before {
+  background:
+    linear-gradient(180deg, rgba(255, 248, 238, 0.18), rgba(82, 50, 29, 0.08)),
+    url("images/cover_1.png") center center / contain no-repeat;
+  filter: saturate(1.02) contrast(1.02);
+  opacity: 1;
+}
+
+.front-spacer-page .booklet-page-inner {
+  background:
+    linear-gradient(180deg, rgba(255, 251, 245, 0.98), rgba(239, 224, 203, 0.98));
+}
+
+.ebook-book .b-page-empty,
+.ebook-book .b-page-blank {
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(180deg, rgba(255, 248, 238, 0.2), rgba(82, 50, 29, 0.1)),
+    url("images/eBook Bg.jpg") center center / cover no-repeat;
+  box-shadow: inset 0 0 0 1px rgba(133, 92, 61, 0.06);
+}
+
+.ebook-book .b-page-empty::before,
+.ebook-book .b-page-blank::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.42), transparent 34%),
     linear-gradient(90deg, rgba(140, 98, 56, 0.08), transparent 22%, transparent 78%, rgba(140, 98, 56, 0.06));
+  pointer-events: none;
 }
 
 .interactive-shell.is-cover-view .spiral-binding {

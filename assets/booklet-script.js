@@ -58,6 +58,7 @@ let isTocOpen = false;
 
 const launchPage = document.getElementById("launchPage");
 const ebook = document.getElementById("ebook");
+const frameworkShell = document.querySelector(".framework-shell");
 const interactiveShell = document.querySelector(".interactive-shell");
 const blurPrev = document.getElementById("blurPrev");
 const blurCurrent = document.getElementById("blurCurrent");
@@ -227,7 +228,7 @@ function updateButtons() {
     return;
   }
 
-  prevBtn.disabled = bookletAnimating || bookletCurrentIndex === 0;
+  prevBtn.disabled = bookletAnimating || bookletCurrentIndex <= FRONT_NOTE_BOOKLET_INDEX;
   nextBtn.disabled = bookletAnimating || bookletCurrentIndex === BACK_COVER_BOOKLET_INDEX;
 }
 
@@ -264,6 +265,10 @@ function updateIndicator(bookletIndex = bookletCurrentIndex) {
   const isFrontCover = bookletIndex === 0;
   const isBackCover = bookletIndex === BACK_COVER_BOOKLET_INDEX;
   const visibleNotes = getVisibleNoteIndices(bookletIndex);
+
+  if (frameworkShell) {
+    frameworkShell.classList.toggle("is-back-cover-mode", isBackCover);
+  }
 
   if (interactiveShell) {
     interactiveShell.classList.toggle("is-cover-view", isFrontCover || isBackCover);
@@ -471,7 +476,7 @@ function initBooklet() {
     startingPage: FRONT_NOTE_BOOKLET_INDEX,
     pagePadding: 0,
     pageNumbers: false,
-    autoCenter: false,
+    autoCenter: true,
     hoverWidth: 0,
     hovers: false,
     overlays: false,
@@ -524,6 +529,11 @@ function changePage(step) {
     return;
   }
 
+  if (step < 0 && bookletCurrentIndex <= FRONT_NOTE_BOOKLET_INDEX) {
+    goHome();
+    return;
+  }
+
   if (!bookletInitialized || !hasBookletLibrary()) {
     const fallbackIndex = clamp(bookletCurrentIndex + (step > 0 ? 2 : -2), 0, BACK_COVER_BOOKLET_INDEX);
     updateUi(fallbackIndex);
@@ -568,6 +578,25 @@ function scheduleResizeUpdate() {
   }, 160);
 }
 
+function destroyBooklet() {
+  if (bookletInitialized && hasBookletLibrary() && bookElement) {
+    try {
+      window.jQuery(bookElement).booklet("destroy");
+    } catch (error) {
+      // Ignore teardown errors and continue resetting local state.
+    }
+  }
+
+  if (bookElement) {
+    bookElement.innerHTML = "";
+  }
+
+  bookletInitialized = false;
+  bookletAnimating = false;
+  bookletCurrentIndex = FRONT_NOTE_BOOKLET_INDEX;
+  updateUi(FRONT_NOTE_BOOKLET_INDEX);
+}
+
 function showBook() {
   if (launchPage) {
     launchPage.classList.add("hidden");
@@ -589,6 +618,8 @@ function showBook() {
 }
 
 function goHome() {
+  closeToc();
+
   if (ebook) {
     ebook.classList.add("hidden");
     ebook.style.display = "none";
@@ -599,9 +630,8 @@ function goHome() {
     launchPage.style.display = "grid";
   }
 
-  closeToc();
-  bookletAnimating = false;
-  goToBookletIndex(FRONT_NOTE_BOOKLET_INDEX);
+  destroyBooklet();
+  window.__ebookIndex = 0;
 
   try {
     if (window.location.hash === "#ebook") {
