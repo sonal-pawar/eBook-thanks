@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Images Thank You Note eBook</title>
+  <link rel="stylesheet" href="assets/style.css?v=31" />
+  <script>
+    window.__ebookNotes = [
+      "assets/images/Sonal.png",
+      "assets/images/Maumit.png",
+      "assets/images/Anonymous_1.png",
+      "assets/images/Prasad.png",
+      "assets/images/Ashwini K.png",
+      "assets/images/Bhagyashree.png",
+      "assets/images/Sagar.png",
+      "assets/images/Jayati.png",
+      "assets/images/Suhas.png",
+      "assets/images/Ruchita.png",
+      "assets/images/Seema.png",
+      "assets/images/2 notes.png",
+      "assets/images/Shamli.png",
+      "assets/images/Anushweta.png",
+      "assets/images/Ashwini V.png",
+      "assets/images/Sagar K.png",
+      "assets/images/Khushboo.png",
+      "assets/images/Pradnya.png",
+      "assets/images/Ravindra.png",
+      "assets/images/Sarthak.png",
+      "assets/images/Shahruk.png",
+      "assets/images/Komal.png",
+      "assets/images/Girish K.png",
+      "assets/images/Isha.png",
+      "assets/images/Shraddha.png",
+      "assets/images/Shrushti.png",
+      "assets/images/Sumit J.png",
+      "assets/images/Shashank.png",
+      "assets/images/note (3).png",
+      "assets/images/Jignesh J.jpg",
+      "assets/images/Radhika P.jpg",
+      "assets/images/K.V.Sai.jpg",
+      "assets/images/Pallavi D.jpg",
+      "assets/images/Mahesh S.jpg",
+      "assets/images/Moumit D.png",
+      "assets/images/Aditya G.png",
+      "assets/images/Harshwardhan.png",
+      "assets/images/Ujwala.png",
+      "assets/images/Rutuja.png",
+      "assets/images/Laksh.png"
+    ];
+    window.__ebookIndex = 0;
+
+    window.__renderEbookFallback = function () {
+      var notes = window.__ebookNotes || [];
+      var imagePath = notes[window.__ebookIndex] || notes[0];
+      var rightImage = document.getElementById("rightImage");
+      var flipImage = document.getElementById("flipImage");
+      var pageIndicator = document.getElementById("pageIndicator");
+      var prevBtn = document.getElementById("prevBtn");
+      var nextBtn = document.getElementById("nextBtn");
+
+      if (!imagePath) {
+        return;
+      }
+
+      if (rightImage) {
+        rightImage.src = imagePath;
+      }
+
+      if (flipImage) {
+        flipImage.src = imagePath;
+      }
+
+      if (pageIndicator) {
+        pageIndicator.textContent = "Page " + (window.__ebookIndex + 1) + " of " + notes.length + " - " + imagePath.split("/").pop();
+      }
+
+      if (prevBtn) {
+        prevBtn.disabled = window.__ebookIndex === 0;
+      }
+
+      if (nextBtn) {
+        nextBtn.disabled = window.__ebookIndex === notes.length - 1;
+      }
+    };
+
+    window.__changeEbookFallback = function (step) {
+      var nextIndex = window.__ebookIndex + step;
+      var notes = window.__ebookNotes || [];
+
+      if (nextIndex < 0 || nextIndex >= notes.length) {
+        return;
+      }
+
+      if (typeof window.__changeEbookPage === "function") {
+        window.__changeEbookPage(step);
+        return;
+      }
+
+      window.__ebookIndex = nextIndex;
+      window.__renderEbookFallback();
+    };
+
+    window.__openEbookFallback = function () {
+      var launchPage = document.getElementById("launchPage");
+      var ebook = document.getElementById("ebook");
+
+      if (typeof window.__openEbook === "function") {
+        window.__openEbook();
+        return;
+      }
+
+      if (launchPage) {
+        launchPage.classList.add("hidden");
+        launchPage.style.display = "none";
+      }
+
+      if (ebook) {
+        ebook.classList.remove("hidden");
+        ebook.style.display = "grid";
+      }
+
+      window.__renderEbookFallback();
+    };
+
+    window.__goHomeFallback = function () {
+      var launchPage = document.getElementById("launchPage");
+      var ebook = document.getElementById("ebook");
+
+      if (typeof window.__goHome === "function") {
+        window.__goHome();
+        return;
+      }
+
+      if (ebook) {
+        ebook.classList.add("hidden");
+        ebook.style.display = "none";
+      }
+
+      if (launchPage) {
+        launchPage.classList.remove("hidden");
+        launchPage.style.display = "grid";
+      }
+
+      if (window.location.hash === "#ebook") {
+        history.replaceState(null, "", window.location.pathname + window.location.search);
+      }
+
+      window.__ebookIndex = 0;
+    };
+  </script>
+</head>
+<body>
+  <section id="launchPage" class="launch-page">
+    <div class="launch-overlay"></div>
+    <img src="assets/images/Launch Page.png" alt="AI Images Thank You Note Launch Page" class="launch-image" />
+    <div class="launch-actions">
+      <a id="openBookBtn" class="open-book-btn" href="#ebook" onclick="window.__openEbookFallback(); return false;">Open eBook</a>
+    </div>
+  </section>
+
+  <section id="ebook" class="ebook hidden" aria-live="polite">
+    <div class="framework-shell">
+      <div class="blur-gallery" aria-hidden="true">
+        <div id="blurPrev" class="blur-note blur-prev"></div>
+        <div id="blurCurrent" class="blur-note blur-current"></div>
+        <div id="blurNext" class="blur-note blur-next"></div>
+      </div>
+      <div class="book-atmosphere" aria-hidden="true">
+        <span class="atmosphere-orb orb-one"></span>
+        <span class="atmosphere-orb orb-two"></span>
+        <span class="atmosphere-orb orb-three"></span>
+      </div>
+      <header class="book-header">
+        <div class="header-brand">
+          <div class="header-copy">
+            <h2>Thank you Ketaki</h2>
+            <p class="header-subtitle">for steering the ship</p>
+          </div>
+        </div>
+        <div class="header-progress">
+          <div class="progress-meta">
+            <span id="progressLabel">Opening Spread</span>
+            <span id="progressCount">1 / 40</span>
+          </div>
+          <div class="progress-track">
+            <div id="progressBar" class="progress-bar"></div>
+          </div>
+        </div>
+        <div class="header-actions">
+          <button id="homeBtn" class="nav-btn nav-icon-btn" type="button" aria-label="Back to home" title="Back to home" onclick="window.__goHomeFallback()">
+            <span class="nav-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M4 11.5 12 5l8 6.5" />
+                <path d="M7.5 10.5V19h9v-8.5" />
+                <path d="M10.5 19v-5h3v5" />
+              </svg>
+            </span>
+            <span class="sr-only">Home</span>
+          </button>
+          <button id="fullscreenBtn" class="nav-btn nav-btn-accent nav-icon-btn" type="button" aria-label="Enter fullscreen" title="Enter fullscreen">
+            <span class="nav-icon nav-icon-expand" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M8 4H4v4" />
+                <path d="M16 4h4v4" />
+                <path d="M20 16v4h-4" />
+                <path d="M4 16v4h4" />
+              </svg>
+            </span>
+            <span class="sr-only">Fullscreen</span>
+          </button>
+        </div>
+      </header>
+
+      <main class="book-stage">
+        <button id="prevBtn" class="edge-nav edge-prev" type="button" aria-label="Previous page" onclick="window.__changeEbookFallback(-1)">
+          <span class="edge-nav-inner">
+            <span class="edge-nav-arrow" aria-hidden="true">←</span>
+            <span class="edge-nav-label">Back</span>
+          </span>
+        </button>
+        <button id="nextBtn" class="edge-nav edge-next" type="button" aria-label="Next page" onclick="window.__changeEbookFallback(1)">
+          <span class="edge-nav-inner">
+            <span class="edge-nav-label">Next</span>
+            <span class="edge-nav-arrow" aria-hidden="true">→</span>
+          </span>
+        </button>
+        <div class="book-layout single-note-layout">
+          <section class="page-panel solo-panel" aria-label="Interactive note page">
+            <div class="page-card interactive-shell solo-shell">
+              <div class="page-label">Current Note</div>
+              <div id="rightFrame" class="right-frame" tabindex="0" aria-label="Interactive note page">
+                <div class="page-underlay">
+                  <img id="rightImage" src="assets/images/Sonal.png" alt="Interactive note preview" />
+                </div>
+                <div id="flipSheet" class="flip-sheet" aria-hidden="true">
+                  <div class="turn-top-shadow"></div>
+                  <div class="turn-shadow"></div>
+                  <div class="flip-sheet-face flip-sheet-front">
+                    <img id="flipImage" src="assets/images/Sonal.png" alt="" />
+                  </div>
+                  <div class="flip-sheet-face flip-sheet-back"></div>
+                </div>
+                <div class="page-gloss"></div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <footer class="book-footer">
+        <div id="pageIndicator" class="page-indicator">Page 1 of 40 - Sonal.png</div>
+        <div class="footer-hint">Use the side arrows to turn pages.</div>
+      </footer>
+    </div>
+  </section>
+
+  <audio id="flipSound" preload="auto">
+    <source src="assets/audio/flip.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script src="assets/script.js?v=26"></script>
+</body>
+</html>
