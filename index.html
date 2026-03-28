@@ -4,8 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AI Images Thank You Note eBook</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <link rel="stylesheet" href="assets/vendor/booklet/jquery.booklet.latest.css" />
-  <link rel="stylesheet" href="assets/style.css?v=35" />
+  <link rel="stylesheet" href="assets/style.css?v=42" />
   <script>
     window.__ebookNotes = [
       "assets/images/Poonam.jpg",
@@ -180,7 +181,10 @@
     <div class="launch-overlay"></div>
     <img src="assets/images/Launch Page.png" alt="AI Images Thank You Note Launch Page" class="launch-image" />
     <div class="launch-actions">
-      <a id="openBookBtn" class="open-book-btn" href="#ebook" onclick="window.__openEbookFallback(); return false;">Open eBook</a>
+      <a id="openBookBtn" class="open-book-btn launch-open-btn" href="#ebook" onclick="window.__openEbookFallback(); return false;">
+        <span class="launch-open-text">Open eBook</span>
+        <span class="launch-open-arrows" aria-hidden="true">>></span>
+      </a>
     </div>
   </section>
 
@@ -274,12 +278,12 @@
         <button id="prevBtn" class="edge-nav edge-prev" type="button" aria-label="Previous page" onclick="window.__changeEbookFallback(-1)">
           <span class="edge-nav-inner">
             <span class="edge-nav-arrow" aria-hidden="true">←</span>
-            <span class="edge-nav-label">Back</span>
+            
           </span>
         </button>
         <button id="nextBtn" class="edge-nav edge-next" type="button" aria-label="Next page" onclick="window.__changeEbookFallback(1)">
           <span class="edge-nav-inner">
-            <span class="edge-nav-label">Next</span>
+            
             <span class="edge-nav-arrow" aria-hidden="true">→</span>
           </span>
         </button>

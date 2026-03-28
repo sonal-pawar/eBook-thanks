@@ -116,11 +116,11 @@ a {
 
 .launch-image {
   position: absolute;
-  inset: 0 0 96px;
+  inset: 0;
   width: 100%;
-  height: calc(100% - 96px);
+  height: 100%;
   object-fit: contain;
-  object-position: center top;
+  object-position: center center;
   filter: saturate(1.08) contrast(1.04) drop-shadow(0 26px 60px rgba(84, 48, 21, 0.2));
   transform: scale(1.015);
   z-index: 2;
@@ -133,20 +133,14 @@ a {
 
 .launch-actions {
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 2;
-  width: 100%;
-  min-height: 96px;
+  top: 50%;
+  right: clamp(24px, 6vw, 88px);
+  z-index: 3;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 16px 20px 20px;
+  transform: translateY(-50%);
   pointer-events: none;
-  background:
-    linear-gradient(180deg, rgba(255, 250, 243, 0), rgba(255, 248, 237, 0.96) 42%, rgba(253, 242, 224, 1) 100%);
-  box-shadow: 0 -16px 42px rgba(138, 90, 49, 0.08);
 }
 
 .open-book-btn,
@@ -175,9 +169,71 @@ a {
   text-decoration: none;
 }
 
+.launch-open-btn {
+  gap: 10px;
+  min-width: 188px;
+  padding: 15px 26px;
+  border-radius: 999px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(250, 235, 212, 0.96));
+  box-shadow:
+    0 22px 42px rgba(84, 48, 21, 0.22),
+    0 0 0 1px rgba(255, 255, 255, 0.82);
+  animation: launchCtaFloat 2.4s ease-in-out infinite;
+}
+
+.launch-open-text {
+  position: relative;
+  z-index: 1;
+}
+
+.launch-open-arrows {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--accent-strong);
+  animation: launchArrowsNudge 1.4s ease-in-out infinite;
+}
+
 .open-book-btn:hover,
 .nav-btn:hover {
   transform: translateY(-1px);
+}
+
+.launch-open-btn:hover {
+  animation-play-state: paused;
+}
+
+@keyframes launchCtaFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+    box-shadow:
+      0 22px 42px rgba(84, 48, 21, 0.22),
+      0 0 0 1px rgba(255, 255, 255, 0.82);
+  }
+  50% {
+    transform: translateY(-4px);
+    box-shadow:
+      0 28px 48px rgba(84, 48, 21, 0.26),
+      0 0 0 1px rgba(255, 255, 255, 0.88);
+  }
+}
+
+@keyframes launchArrowsNudge {
+  0%,
+  100% {
+    transform: translateX(0);
+    opacity: 0.76;
+  }
+  50% {
+    transform: translateX(4px);
+    opacity: 1;
+  }
 }
 
 .ebook {
@@ -784,14 +840,18 @@ a {
 .edge-nav {
   position: absolute;
   top: 50%;
-  z-index: 4;
-  min-width: 112px;
-  height: 54px;
-  padding: 0 18px;
+  z-index: 6;
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+  padding: 0;
   border: 1px solid rgba(138, 90, 49, 0.16);
   border-radius: 999px;
-  background: rgba(255, 251, 245, 0.78);
-  box-shadow: 0 10px 24px rgba(96, 58, 29, 0.08);
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow:
+    0 16px 30px rgba(96, 58, 29, 0.14),
+    0 0 0 1px rgba(255, 255, 255, 0.74);
+  backdrop-filter: blur(8px);
   transform: translateY(-50%);
   cursor: pointer;
   transition: transform 200ms ease, box-shadow 200ms ease, background 200ms ease, opacity 200ms ease;
@@ -801,43 +861,57 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
   width: 100%;
+  height: 100%;
   color: var(--accent-strong);
   font-weight: 700;
-  letter-spacing: 0.04em;
 }
 
 .edge-prev {
-  left: 8px;
+  left: -10px;
 }
 
 .edge-next {
-  right: 8px;
+  right: -10px;
+  z-index: 9;
 }
 
 .edge-nav-arrow {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 22px;
-  height: 22px;
+  width: 100%;
+  height: 100%;
   border-radius: 999px;
   background: transparent;
-  font-size: 0.9rem;
+  font-size: 0;
   line-height: 1;
   transition: transform 200ms ease, color 200ms ease;
 }
 
-.edge-nav-label {
-  font-size: 0.84rem;
-  text-transform: uppercase;
+.edge-prev .edge-nav-arrow::before,
+.edge-next .edge-nav-arrow::before {
+  font-family: "Font Awesome 6 Free";
+  font-size: 1rem;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--accent-strong);
+}
+
+.edge-prev .edge-nav-arrow::before {
+  content: "\f053";
+}
+
+.edge-next .edge-nav-arrow::before {
+  content: "\f054";
 }
 
 .edge-nav:hover {
   transform: translateY(calc(-50% - 2px));
-  background: rgba(255, 255, 255, 0.92);
-  box-shadow: 0 16px 30px rgba(96, 58, 29, 0.14);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow:
+    0 20px 34px rgba(96, 58, 29, 0.18),
+    0 0 0 1px rgba(255, 255, 255, 0.84);
 }
 
 .edge-nav:hover .edge-nav-arrow {
@@ -849,6 +923,11 @@ a {
   cursor: default;
   opacity: 0.4;
   box-shadow: none;
+}
+
+.edge-next:disabled {
+  background: rgba(255, 255, 255, 0.78);
+  border-color: rgba(138, 90, 49, 0.16);
 }
 
 .edge-nav:disabled:hover {
@@ -1454,6 +1533,18 @@ a {
     bottom: 20px;
   }
 
+  .launch-actions {
+    top: auto;
+    right: 50%;
+    bottom: 20px;
+    transform: translateX(50%);
+  }
+
+  .launch-open-btn {
+    min-width: 168px;
+    padding: 13px 22px;
+  }
+
   .book-header,
   .book-footer {
     left: 12px;
@@ -1616,22 +1707,18 @@ a {
   }
 
   .edge-nav {
-    min-width: 44px;
-    width: 44px;
-    height: 44px;
+    min-width: 42px;
+    width: 42px;
+    height: 42px;
     padding: 0;
   }
 
   .edge-prev {
-    left: 0;
+    left: -6px;
   }
 
   .edge-next {
-    right: 0;
-  }
-
-  .edge-nav-label {
-    display: none;
+    right: -6px;
   }
 
   .edge-nav-inner {
