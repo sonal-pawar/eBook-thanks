@@ -1,5 +1,6 @@
 const notes = window.__ebookNotes || [
   "assets/images/Poonam.jpg",
+  "assets/images/Mahesh K.jpg",
   "assets/images/Laksh.png",
   "assets/images/Ashwini V.png",
   "assets/images/Prasad.png",
@@ -39,7 +40,8 @@ const notes = window.__ebookNotes || [
   "assets/images/Radhika P.jpg",
   "assets/images/note (3).png",
   "assets/images/Sumit J.png",
-  "assets/images/Ravindra.png"
+  "assets/images/Ravindra.png",
+  "assets/images/cover_1.png"
 ];
 
 const FRONT_COVER_IMAGE = "assets/images/Launch Page.png";
@@ -419,8 +421,13 @@ function renderBookPages() {
   `);
 
   notes.forEach((notePath, index) => {
+    const noteClasses = ["booklet-page", "note-page"];
+    if (/\/cover_1\.png$/i.test(notePath)) {
+      noteClasses.push("closing-note-page");
+    }
+
     pageMarkup.push(`
-      <div class="booklet-page note-page" data-note-index="${index}">
+      <div class="${noteClasses.join(" ")}" data-note-index="${index}">
         <div class="booklet-page-inner">
           <img src="${notePath}" alt="${escapeHtml(getNoteLabel(index))} note" loading="${index < 4 ? "eager" : "lazy"}" />
         </div>

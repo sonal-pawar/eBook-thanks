@@ -1,5 +1,6 @@
 const notes = window.__ebookNotes || [
   "assets/images/Poonam.jpg",
+  "assets/images/Mahesh K.jpg",
   "assets/images/Laksh.png",
   "assets/images/Ashwini V.png",
   "assets/images/Prasad.png",
@@ -39,7 +40,8 @@ const notes = window.__ebookNotes || [
   "assets/images/Radhika P.jpg",
   "assets/images/note (3).png",
   "assets/images/Sumit J.png",
-  "assets/images/Ravindra.png"
+  "assets/images/Ravindra.png",
+  "assets/images/cover_1.png"
 ];
 
 const BACK_COVER_IMAGE = window.__ebookBackCover || "assets/images/back_cover.png";
