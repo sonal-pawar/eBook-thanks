@@ -1,7 +1,9 @@
 const notes = window.__ebookNotes || [
   "assets/images/Poonam.jpg",
+  "assets/images/Rohini.png",
   "assets/images/Mahesh K.jpg",
   "assets/images/Laksh.png",
+  "assets/images/Rabish.png",
   "assets/images/Ashwini V.png",
   "assets/images/Prasad.png",
   "assets/images/Shrushti.png",
